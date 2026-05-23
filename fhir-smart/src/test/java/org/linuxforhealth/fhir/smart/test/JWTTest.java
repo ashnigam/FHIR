@@ -23,6 +23,9 @@ import com.auth0.jwt.algorithms.Algorithm;
 import org.linuxforhealth.fhir.smart.JWT;
 import org.linuxforhealth.fhir.smart.JWT.DecodedJWT;
 
+import org.bouncycastle.pqc.jcajce.provider.BouncyCastlePQCProvider;
+import org.bouncycastle.pqc.jcajce.spec.KyberParameterSpec;
+
 /**
  * Test for decoding JWTs and getting claims
  */
@@ -54,7 +57,7 @@ public class JWTTest {
 
     @Test
     public void testJWTwithSig() throws NoSuchAlgorithmException {
-        KeyPairGenerator keygen = KeyPairGenerator.getInstance("RSA");
+        KeyPairGenerator keygen = KeyPairGenerator.getInstance("DILITHIUM3", "BC");
         KeyPair keypair = keygen.generateKeyPair();
         RSAPublicKey publicKey = (RSAPublicKey) keypair.getPublic();
         RSAPrivateKey privateKey = (RSAPrivateKey) keypair.getPrivate();
