@@ -95,7 +95,7 @@ public class LiveCapabilitiesToConfigGeneratorMain {
      * @throws Exception
      */
     private SSLSocketFactory createFactory() throws Exception {
-        SSLContext sslContext = SSLContext.getInstance("SSL");
+        SSLContext sslContext = SSLContext.getInstance("TLS");
         sslContext.init(null, new TrustManager[]{new AllTrustManager()} , null);
         return sslContext.getSocketFactory();
     }
